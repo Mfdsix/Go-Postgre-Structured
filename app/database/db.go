@@ -3,12 +3,16 @@ package database
 import (
 	"log"
 
+	"go-postgre/app/models"
+
 	"github.com/jmoiron/sqlx"
 )
 
 type PostDB interface {
 	Open() error
 	Close() error
+	CreatePost(p *models.DPost) error
+	GetPosts() ([]*models.DPost, error)
 }
 
 type DB struct {
